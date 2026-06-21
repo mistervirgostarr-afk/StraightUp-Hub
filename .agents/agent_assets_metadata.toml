@@ -1,0 +1,38 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "ivdHGNSo4THuW4TZ778Q_"
+uri = "file://artifacts/straightup-production/public/images/soak-hero.png"
+type = "image"
+title = "S.O.A.K. artist hero profile"
+
+[[generated]]
+id = "Ik6KoHTxYUWswGZfFyMeJ"
+uri = "file://artifacts/straightup-production/public/images/martel-engine.png"
+type = "image"
+title = "MartelEngine mysterious cinematic visual"
+
+[[generated]]
+id = "6io9Lela4WsuXJBhjQq3u"
+uri = "file://artifacts/straightup-production/public/images/album-1.png"
+type = "image"
+title = "Album cover majestic gospel"
+
+[[generated]]
+id = "oL_AjM6WWIaz9iNdN2dgg"
+uri = "file://artifacts/straightup-production/public/images/album-2.png"
+type = "image"
+title = "Album cover cinematic sovereign"
+
+[[generated]]
+id = "Ce_n0UFeim-5CrlLuXLna"
+uri = "file://artifacts/straightup-production/public/images/app-1.png"
+type = "image"
+title = "Sleek app icon gold"
+
+[[generated]]
+id = "MxRS8UJxNl9usQBxZntmR"
+uri = "file://artifacts/straightup-production/public/images/app-2.png"
+type = "image"
+title = "Sleek app icon blue"
