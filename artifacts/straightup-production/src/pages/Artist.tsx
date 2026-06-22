@@ -22,12 +22,12 @@ const item = {
 };
 
 const releases = [
-  { title: "Crowned", type: "Single", year: "2024", desc: "A declaration of identity — son, heir, crowned in grace." },
-  { title: "Still Waters", type: "EP", year: "2023", desc: "Five tracks of cinematic gospel rap, layered with orchestral production." },
-  { title: "Kingdom Come", type: "Album", year: "2022", desc: "The debut — sixteen tracks of testimony, war, and worship." },
-  { title: "Righteous Fire", type: "Single", year: "2022", desc: "Hard-hitting proclamation with brass and 808s." },
-  { title: "The Valley", type: "Single", year: "2021", desc: "An honest walk through doubt and divine faithfulness." },
-  { title: "Emmanuel", type: "Single", year: "2021", desc: "God with us — a melodic meditation at midnight." },
+  { title: "Get Back to Work", type: "Album", year: "Upcoming", desc: "The next chapter. Cinematic, driven, relentless. A call to rise and build the Kingdom — no excuses, just execution.", upcoming: true },
+  { title: "Crowned", type: "Single", year: "2024", desc: "A declaration of identity — son, heir, crowned in grace.", upcoming: false },
+  { title: "Still Waters", type: "EP", year: "2023", desc: "Five tracks of cinematic gospel rap, layered with orchestral production.", upcoming: false },
+  { title: "Kingdom Come", type: "Album", year: "2022", desc: "The debut — sixteen tracks of testimony, war, and worship.", upcoming: false },
+  { title: "Righteous Fire", type: "Single", year: "2022", desc: "Hard-hitting proclamation with brass and 808s.", upcoming: false },
+  { title: "The Valley", type: "Single", year: "2021", desc: "An honest walk through doubt and divine faithfulness.", upcoming: false },
 ];
 
 const pillars = [
@@ -85,13 +85,23 @@ export default function Artist() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 1 }}
           >
-            <div className="aspect-[3/4] glass-panel flex items-center justify-center relative overflow-hidden">
-              <div className="absolute inset-0"
-                style={{ background: "radial-gradient(circle at 50% 30%, hsl(44 56% 54% / 0.15), transparent 70%)" }}
+            <div className="aspect-[3/4] relative overflow-hidden" style={{ background: "hsl(0 0% 4%)" }}>
+              <img
+                src="/assets/maurice-ceo.jpg"
+                alt="Maurice Martel — CEO, StraightUp Production"
+                className="w-full h-full object-cover object-top"
               />
-              <div className="text-center relative z-10">
-                <div className="font-display text-8xl text-primary/20 mb-4">S.O.A.K.</div>
-                <Crown className="w-16 h-16 text-primary/40 mx-auto" />
+              {/* subtle gold vignette overlay */}
+              <div className="absolute inset-0"
+                style={{ background: "linear-gradient(to bottom, transparent 55%, hsl(0 0% 2% / 0.9) 100%)" }}
+              />
+              <div className="absolute bottom-6 left-6 right-6">
+                <p className="font-display text-xs tracking-[0.4em] uppercase" style={{ color: "hsl(44 90% 56%)" }}>
+                  Maurice Martel
+                </p>
+                <p className="text-white/40 text-xs font-light tracking-widest uppercase mt-1">
+                  CEO · StraightUp Production
+                </p>
               </div>
             </div>
           </motion.div>
@@ -200,18 +210,40 @@ export default function Artist() {
               <motion.div
                 key={release.title}
                 variants={item}
-                className="glass-panel group hover:border-primary/20 transition-all duration-500 overflow-hidden"
+                className={`glass-panel group transition-all duration-500 overflow-hidden ${release.upcoming ? "border-primary/30 md:col-span-2 lg:col-span-1" : "hover:border-primary/20"}`}
                 data-testid={`release-${release.title.toLowerCase().replace(/\s/g, "-")}`}
               >
-                <div className="aspect-square bg-gradient-to-br from-primary/10 to-accent/5 flex items-center justify-center relative">
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{ background: "radial-gradient(circle, hsl(44 56% 54% / 0.1), transparent 70%)" }}
-                  />
-                  <Music2 className="w-16 h-16 text-primary/30 group-hover:text-primary/60 transition-colors duration-500" />
+                <div className="aspect-square relative overflow-hidden flex items-center justify-center"
+                  style={{ background: "hsl(0 0% 4%)" }}>
+                  {release.upcoming ? (
+                    <>
+                      <img
+                        src="/assets/album-get-back-to-work.png"
+                        alt="Get Back to Work"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
+                      <div className="absolute top-3 right-3">
+                        <span className="font-display tracking-[0.3em] text-xs uppercase px-3 py-1"
+                          style={{ background: "hsl(44 90% 56%)", color: "hsl(0 0% 2%)" }}>
+                          Upcoming
+                        </span>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                        style={{ background: "radial-gradient(circle, hsl(44 56% 54% / 0.1), transparent 70%)" }}
+                      />
+                      <Music2 className="w-16 h-16 text-primary/30 group-hover:text-primary/60 transition-colors duration-500" />
+                    </>
+                  )}
                 </div>
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-display tracking-widest text-accent uppercase">{release.type}</span>
+                    <span className={`text-xs font-display tracking-widest uppercase ${release.upcoming ? "text-primary" : "text-accent"}`}>
+                      {release.type}
+                    </span>
                     <span className="text-xs text-white/40">{release.year}</span>
                   </div>
                   <h3 className="font-display text-2xl mb-2 text-white">{release.title}</h3>

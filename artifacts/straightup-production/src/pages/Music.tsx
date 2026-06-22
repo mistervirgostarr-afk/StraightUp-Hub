@@ -50,6 +50,42 @@ export default function Music() {
       exit="exit"
       className="bg-background pt-24"
     >
+      {/* ── Upcoming: Get Back to Work ── */}
+      <section className="relative min-h-[70vh] flex items-end overflow-hidden border-b border-white/5">
+        <div className="absolute inset-0">
+          <img
+            src="/assets/album-get-back-to-work.png"
+            alt="Get Back to Work — upcoming album"
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+        </div>
+        <div className="relative z-10 container mx-auto px-6 md:px-12 pb-16 md:pb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: EASE }}
+          >
+            <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 font-display tracking-[0.35em] text-xs uppercase"
+              style={{ background: "hsl(44 90% 56%)", color: "hsl(0 0% 2%)" }}>
+              Upcoming Album
+            </div>
+            <h2 className="font-display text-6xl md:text-[7rem] text-white leading-none tracking-tight mb-4">
+              Get Back<br />
+              <span style={{ color: "hsl(44 80% 60%)" }}>to Work</span>
+            </h2>
+            <p className="text-white/50 text-xl font-light max-w-md mb-8 leading-relaxed">
+              S.O.A.K. · StraightUp Production
+            </p>
+            <p className="text-white/35 text-sm font-light max-w-sm leading-relaxed">
+              The next chapter is coming. Cinematic, driven, relentless.
+              A Kingdom call to rise and build — no excuses, just execution.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Header */}
       <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0"
