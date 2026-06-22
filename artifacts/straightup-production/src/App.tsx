@@ -11,6 +11,8 @@ import Artist from "@/pages/Artist";
 import MartelEngine from "@/pages/MartelEngine";
 import Music from "@/pages/Music";
 import Apps from "@/pages/Apps";
+import RoyalDeckTactics from "@/pages/RoyalDeckTactics";
+import MorningWithTheMaster from "@/pages/MorningWithTheMaster";
 import Contact from "@/pages/Contact";
 import NotFound from "@/pages/not-found";
 
@@ -25,6 +27,8 @@ function Router() {
         <Route path="/martel-engine" component={MartelEngine} />
         <Route path="/music" component={Music} />
         <Route path="/apps" component={Apps} />
+        <Route path="/apps/royal-deck-tactics" component={RoyalDeckTactics} />
+        <Route path="/apps/morning-with-the-master" component={MorningWithTheMaster} />
         <Route path="/contact" component={Contact} />
         <Route component={NotFound} />
       </Switch>
