@@ -41,6 +41,13 @@ const outputs = [
     label: "Martel4D Volume",
     accent: "hsl(44 90% 56%)",
   },
+  {
+    title: "Alive",
+    desc: "Fire, pressure, expansion — the engine outputs phenomena that mirror creation itself. Not generated. Not simulated. Computed from the shape.",
+    img: "/assets/martel-flame.png",
+    label: "Martel4D Flame",
+    accent: "hsl(20 100% 60%)",
+  },
 ];
 
 export default function MartelEngine() {
@@ -60,27 +67,20 @@ export default function MartelEngine() {
     >
       {/* ── Hero ── */}
       <section ref={heroRef} className="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden">
-        {/* Background: the LIGHT output — what the engine produces */}
-        <motion.div className="absolute inset-0 flex items-center justify-center" style={{ scale: bgScale, opacity: bgOpacity }}>
-          <img
-            src="/assets/martel-light.png"
-            alt=""
+        {/* Background: 4D LIGHT video — the engine in motion */}
+        <motion.div className="absolute inset-0" style={{ scale: bgScale, opacity: bgOpacity }}>
+          <video
+            src="/assets/martel-4d-light.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
             aria-hidden="true"
             className="w-full h-full object-cover"
           />
         </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/40 to-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50" />
-
-        {/* Centered: VOLUME orb behind the title */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <img
-            src="/assets/martel-volume.png"
-            alt=""
-            aria-hidden="true"
-            className="w-[420px] md:w-[600px] opacity-20 blur-sm"
-          />
-        </div>
 
         <motion.div
           style={{ y: textY }}
@@ -245,7 +245,7 @@ export default function MartelEngine() {
           </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-3">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4">
           {outputs.map((item, i) => (
             <motion.div
               key={item.title}
@@ -302,12 +302,14 @@ export default function MartelEngine() {
       </section>
 
       {/* ── Full gallery strip ── */}
-      <section className="border-t border-white/5 grid grid-cols-2 md:grid-cols-4">
+      <section className="border-t border-white/5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
         {[
           { src: "/assets/martel-volume.png", label: "Volume" },
           { src: "/assets/martel-spiral.png", label: "Spiral" },
           { src: "/assets/martel-fire.png", label: "Fire" },
           { src: "/assets/martel-cells.png", label: "Cells" },
+          { src: "/assets/martel-eruption2.png", label: "Eruption" },
+          { src: "/assets/martel-flame.png", label: "Flame" },
         ].map((item, i) => (
           <div key={item.label} className="relative overflow-hidden aspect-square group">
             <img
