@@ -51,29 +51,36 @@
 
 /* Base Theme - Force Dark Mode Styling */
 :root, .dark {
-  --background: 224 53% 4%;
+  --background: 0 0% 2%;
   --foreground: 210 20% 98%;
-  --border: 226 60% 15%;
+  --border: 220 40% 12%;
   
-  --card: 226 60% 8%;
+  --card: 220 30% 6%;
   --card-foreground: 210 20% 98%;
-  --card-border: 226 60% 15%;
+  --card-border: 220 40% 12%;
   
-  --popover: 226 60% 8%;
+  --popover: 220 30% 6%;
   --popover-foreground: 210 20% 98%;
-  --popover-border: 226 60% 15%;
+  --popover-border: 220 40% 12%;
   
-  --primary: 44 56% 54%;
-  --primary-foreground: 224 53% 4%;
+  --primary: 44 90% 56%;
+  --primary-foreground: 0 0% 2%;
   
-  --secondary: 226 60% 15%;
+  --secondary: 220 30% 12%;
   --secondary-foreground: 210 20% 98%;
   
-  --muted: 226 60% 12%;
-  --muted-foreground: 215 15% 65%;
+  --muted: 220 30% 9%;
+  --muted-foreground: 215 15% 55%;
   
-  --accent: 220 100% 56%;
+  --accent: 225 100% 65%;
   --accent-foreground: 210 20% 98%;
+  
+  /* MartelEngine palette — pulled from actual MartelEngine visuals */
+  --engine-blue: 220 100% 62%;
+  --engine-magenta: 285 80% 65%;
+  --engine-gold: 44 90% 56%;
+  --engine-cyan: 185 100% 60%;
+  --engine-crimson: 345 60% 12%;
   
   --destructive: 0 84% 60%;
   --destructive-foreground: 210 20% 98%;

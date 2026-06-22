@@ -3,7 +3,6 @@ import { useRef } from "react";
 import { Lock, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import MartelEngineOrb from "@/components/MartelEngineOrb";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -15,35 +14,41 @@ const pageVariants = {
 
 const facts = [
   { label: "Invented By", value: "Maurice Martel" },
-  { label: "Classification", value: "Proprietary Technology" },
+  { label: "Form", value: "Shape + Functional Code" },
   { label: "Status", value: "Patent Pending" },
-  { label: "Domain", value: "Sound Engineering" },
+  { label: "Classification", value: "Proprietary Algorithm" },
 ];
 
-const attrs = [
+const outputs = [
   {
-    title: "Revolutionary Architecture",
-    desc: "A machine born from years of hands-on studio work, engineering instinct, and a conviction that sound deserved a better engine.",
-    color: "cyan",
+    title: "Cinematic",
+    desc: "The visuals you see in the music — the plasma, the rings, the light — are the engine's output. Not post-production effects. Not filters. The code renders what it computes.",
+    img: "/assets/martel-light.png",
+    label: "Martel4D Light",
+    accent: "hsl(185 100% 60%)",
   },
   {
-    title: "Consecrated Innovation",
-    desc: "Not built for the industry. Built for the Kingdom. Every component of the MartelEngine is designed with divine intention behind it.",
-    color: "purple",
+    title: "Intelligent",
+    desc: "Built from a proprietary geometric shape and a functional code architecture designed entirely by Maurice Martel. Its logic does not exist anywhere else.",
+    img: "/assets/martel-spiral.png",
+    label: "Martel4D Spiral",
+    accent: "hsl(225 100% 65%)",
   },
   {
-    title: "Inventor-Owned",
-    desc: "Maurice Martel stands as sole founder and inventor. This is not a collaboration — this is a calling answered in mechanical form.",
-    color: "amber",
+    title: "Spirit Led",
+    desc: "The engine did not begin as a commercial product. It began as an act of consecration — a code written for the Kingdom, with divine intention at every layer.",
+    img: "/assets/martel-volume.png",
+    label: "Martel4D Volume",
+    accent: "hsl(44 90% 56%)",
   },
 ];
 
 export default function MartelEngine() {
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const orbScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.6]);
-  const orbOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1.0, 1.12]);
+  const bgOpacity = useTransform(scrollYProgress, [0, 0.8], [0.5, 0.15]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
 
   return (
     <motion.div
@@ -51,34 +56,41 @@ export default function MartelEngine() {
       initial="initial"
       animate="animate"
       exit="exit"
-      className="bg-background"
+      className="bg-black"
     >
-      {/* ── Full-screen Hero ── */}
+      {/* ── Hero ── */}
       <section ref={heroRef} className="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden">
-        {/* Warm dark background — matches video */}
-        <div className="absolute inset-0"
-          style={{ background: "radial-gradient(ellipse at center, hsl(25 40% 6%), hsl(224 53% 3%) 70%)" }}
-        />
-
-        {/* The Orb — centered, large, alive */}
-        <motion.div
-          className="absolute"
-          style={{ scale: orbScale, opacity: orbOpacity }}
-        >
-          <MartelEngineOrb size="hero" />
+        {/* Background: the LIGHT output — what the engine produces */}
+        <motion.div className="absolute inset-0 flex items-center justify-center" style={{ scale: bgScale, opacity: bgOpacity }}>
+          <img
+            src="/assets/martel-light.png"
+            alt=""
+            aria-hidden="true"
+            className="w-full h-full object-cover"
+          />
         </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/40 to-black" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50" />
 
-        {/* Text floats above the orb */}
+        {/* Centered: VOLUME orb behind the title */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <img
+            src="/assets/martel-volume.png"
+            alt=""
+            aria-hidden="true"
+            className="w-[420px] md:w-[600px] opacity-20 blur-sm"
+          />
+        </div>
+
         <motion.div
           style={{ y: textY }}
-          className="relative z-10 text-center px-6 flex flex-col items-center pointer-events-none"
+          className="relative z-10 text-center px-6 flex flex-col items-center"
         >
-          {/* World Premiere badge */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="inline-flex items-center gap-2 mb-[340px] border border-white/10 bg-black/30 backdrop-blur-sm px-4 py-2"
+            className="inline-flex items-center gap-2 mb-10 border border-white/10 bg-black/40 backdrop-blur-sm px-5 py-2"
           >
             <div className="w-2 h-2 rounded-full animate-pulse" style={{ background: "hsl(185 100% 60%)" }} />
             <span className="font-display tracking-[0.4em] text-sm uppercase" style={{ color: "hsl(185 100% 70%)" }}>
@@ -87,7 +99,6 @@ export default function MartelEngine() {
             <Lock className="w-3 h-3 text-white/30" />
           </motion.div>
 
-          {/* Title below the orb */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -101,9 +112,9 @@ export default function MartelEngine() {
             </h1>
             <h1
               className="font-display text-[4rem] md:text-[8rem] lg:text-[11rem] leading-none tracking-tighter"
-              style={{ WebkitTextStroke: "1.5px hsl(185 100% 60% / 0.5)", color: "transparent" }}
+              style={{ WebkitTextStroke: "1.5px hsl(185 100% 60% / 0.55)", color: "transparent" }}
             >
-              ENGINE
+              ENGINE™
             </h1>
           </motion.div>
 
@@ -111,21 +122,30 @@ export default function MartelEngine() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.1 }}
-            className="text-xl md:text-2xl text-white/40 font-light tracking-widest mt-8"
+            className="font-display tracking-[0.4em] text-sm uppercase mt-6"
+            style={{ color: "hsl(185 100% 62%)" }}
           >
-            Invented and Founded by <span className="text-white/80">Maurice Martel</span>
+            Cinematic. Intelligent. Spirit Led.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.3 }}
+            className="text-white/35 font-light tracking-widest mt-3 mb-10 text-sm"
+          >
+            A shape and a functional code — invented by <span className="text-white/65">Maurice Martel</span>
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.4 }}
-            className="mt-10 pointer-events-auto"
+            transition={{ duration: 1, delay: 1.5 }}
           >
             <Link href="/contact">
               <Button
                 className="font-display tracking-[0.3em] text-lg px-12 py-6 rounded-none text-black"
-                style={{ background: "hsl(185 100% 60%)", boxShadow: "0 0 40px hsl(185 100% 60% / 0.4)" }}
+                style={{ background: "hsl(185 100% 60%)", boxShadow: "0 0 50px hsl(185 100% 60% / 0.35)" }}
                 data-testid="btn-engine-cta"
               >
                 Stay Tuned
@@ -145,44 +165,42 @@ export default function MartelEngine() {
         </motion.div>
       </section>
 
-      {/* ── The Signal ── */}
+      {/* ── What It Is ── */}
       <section className="py-32 border-t border-white/5">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="grid md:grid-cols-2 gap-20 items-center">
-            {/* Smaller orb on the left */}
+        <div className="container mx-auto px-6 md:px-12 max-w-5xl">
+          <div className="grid md:grid-cols-2 gap-16 items-start">
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 1.2 }}
-              className="flex justify-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.9 }}
             >
-              <MartelEngineOrb size="md" />
+              <p className="font-display tracking-[0.4em] text-sm uppercase mb-6" style={{ color: "hsl(185 100% 60%)" }}>
+                What It Is
+              </p>
+              <h2 className="font-display text-5xl md:text-6xl text-white leading-tight mb-8">
+                Not a plug-in.<br />
+                Not a preset.<br />
+                <span style={{ color: "hsl(185 100% 62%)" }}>A code.</span>
+              </h2>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 1 }}
+              transition={{ duration: 0.9, delay: 0.15 }}
+              className="pt-0 md:pt-20"
             >
-              <h2
-                className="font-display text-5xl md:text-6xl text-white mb-8 leading-tight"
-              >
-                An Engine of Sound,{" "}
-                <span style={{ color: "hsl(185 100% 65%)" }}>
-                  Unlike Any Before It
-                </span>
-              </h2>
               <p className="text-xl text-white/50 leading-relaxed font-light mb-6">
-                The MartelEngine is not software. It is not a plugin. It is not a remix of what already exists.
-                It is a machine — conceived in the creative silence of one man's studio, born from a conviction
-                that the architecture of sound was overdue for reinvention.
+                The MartelEngine begins with a shape — a proprietary geometric form that Maurice Martel
+                invented and converted into functional code. It is an algorithm, not an appliance.
+                A system of logic, not a piece of hardware.
               </p>
-              <p className="text-xl text-white/50 leading-relaxed font-light">
-                What you see in the music is not a visual effect layered in post-production.
-                That energy — the rings, the light, the pulse — is the MartelEngine working.
-                Details are protected. Revelations have their season.
+              <p className="text-xl text-white/40 leading-relaxed font-light">
+                What you see when the engine is active — the plasma, the rings, the light — is
+                the code rendering in real time. Those visuals are the engine's output, not its input.
+                The engine is the math beneath them.
               </p>
             </motion.div>
           </div>
@@ -190,71 +208,130 @@ export default function MartelEngine() {
       </section>
 
       {/* ── Stats ── */}
-      <section className="py-20 border-t border-white/5"
-        style={{ background: "radial-gradient(ellipse at center, hsl(280 40% 6%), hsl(224 53% 3%) 80%)" }}
+      <section className="border-t border-white/5"
+        style={{ background: "radial-gradient(ellipse at center, hsl(225 40% 5%), hsl(0 0% 1.5%) 80%)" }}
       >
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5">
-            {facts.map((fact, i) => (
-              <motion.div
-                key={fact.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="px-8 py-10 text-center"
-                style={{ background: "hsl(224 53% 3%)" }}
-                data-testid={`engine-fact-${i}`}
-              >
-                <p className="text-xs font-display tracking-[0.3em] text-white/25 uppercase mb-3">{fact.label}</p>
-                <p className="font-display text-xl text-white">{fact.value}</p>
-              </motion.div>
-            ))}
-          </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px" style={{ background: "hsl(220 20% 10%)" }}>
+          {facts.map((fact, i) => (
+            <motion.div
+              key={fact.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="px-8 py-10 text-center"
+              style={{ background: "hsl(0 0% 1.5%)" }}
+              data-testid={`engine-fact-${i}`}
+            >
+              <p className="text-xs font-display tracking-[0.3em] text-white/25 uppercase mb-3">{fact.label}</p>
+              <p className="font-display text-lg text-white leading-tight">{fact.value}</p>
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      {/* ── Attributes ── */}
-      <section className="py-32 border-t border-white/5">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className="grid md:grid-cols-3 gap-8">
-            {attrs.map((attr, i) => {
-              const barColor =
-                attr.color === "cyan"
-                  ? "hsl(185 100% 60%)"
-                  : attr.color === "purple"
-                  ? "hsl(280 65% 58%)"
-                  : "hsl(25 90% 52%)";
-
-              return (
-                <motion.div
-                  key={attr.title}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.8, delay: i * 0.15 }}
-                  className="glass-panel p-10 group transition-colors duration-500 hover:border-white/20"
-                  data-testid={`attr-${i}`}
-                >
-                  <div
-                    className="w-12 h-1 mb-8 group-hover:w-20 transition-all duration-500"
-                    style={{ background: barColor }}
-                  />
-                  <h3 className="font-display text-2xl md:text-3xl text-white mb-4">{attr.title}</h3>
-                  <p className="text-white/50 font-light leading-relaxed">{attr.desc}</p>
-                </motion.div>
-              );
-            })}
-          </div>
+      {/* ── Outputs: Cinematic / Intelligent / Spirit Led ── */}
+      <section className="border-t border-white/5">
+        <div className="container mx-auto px-6 md:px-12 pt-20 pb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <p className="font-display tracking-[0.5em] text-xs text-white/30 uppercase mb-4">The Engine's Output</p>
+            <h2 className="font-display text-5xl md:text-6xl text-white">What It Produces</h2>
+          </motion.div>
         </div>
+
+        <div className="grid md:grid-cols-3">
+          {outputs.map((item, i) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.8, delay: i * 0.15 }}
+              className="relative overflow-hidden aspect-square group"
+              data-testid={`output-${i}`}
+            >
+              <img
+                src={item.img}
+                alt={item.label}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20" />
+              <div className="absolute bottom-0 left-0 right-0 p-8">
+                <div
+                  className="w-10 h-0.5 mb-4 transition-all duration-500 group-hover:w-16"
+                  style={{ background: item.accent }}
+                />
+                <h3 className="font-display text-3xl mb-1" style={{ color: item.accent }}>
+                  {item.title}
+                </h3>
+                <p className="text-[10px] font-display tracking-widest text-white/30 uppercase mb-3">{item.label}</p>
+                <p className="text-white/50 font-light text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  {item.desc}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Protection Notice ── */}
+      <section className="py-24 border-t border-white/5">
+        <div className="container mx-auto px-6 md:px-12 max-w-3xl text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <Lock className="w-8 h-8 text-white/20 mx-auto mb-6" />
+            <p className="font-display text-2xl md:text-3xl text-white/60 leading-relaxed">
+              "The shape is protected. The code is proprietary.{" "}
+              <span className="text-white">The output speaks for itself."</span>
+            </p>
+            <p className="mt-6 text-white/30 font-display tracking-widest text-sm uppercase">
+              — Maurice Martel, Inventor
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Full gallery strip ── */}
+      <section className="border-t border-white/5 grid grid-cols-2 md:grid-cols-4">
+        {[
+          { src: "/assets/martel-volume.png", label: "Volume" },
+          { src: "/assets/martel-spiral.png", label: "Spiral" },
+          { src: "/assets/martel-fire.png", label: "Fire" },
+          { src: "/assets/martel-cells.png", label: "Cells" },
+        ].map((item, i) => (
+          <div key={item.label} className="relative overflow-hidden aspect-square group">
+            <img
+              src={item.src}
+              alt={`Martel4D ${item.label}`}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
+            />
+            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-500" />
+            <div className="absolute bottom-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span className="font-display text-[10px] tracking-widest text-white/60 uppercase">
+                Martel4D — {item.label}
+              </span>
+            </div>
+          </div>
+        ))}
       </section>
 
       {/* ── CTA ── */}
       <section className="py-32 border-t border-white/5 relative overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-60"
-          style={{ background: "radial-gradient(ellipse at center, hsl(25 60% 6%), hsl(224 53% 3%) 70%)" }}
-        />
+        <div className="absolute inset-0">
+          <img src="/assets/martel-eruption.png" alt="" aria-hidden="true"
+            className="w-full h-full object-cover opacity-15" />
+          <div className="absolute inset-0 bg-black/80" />
+        </div>
         <div className="container mx-auto px-6 md:px-12 text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -262,20 +339,36 @@ export default function MartelEngine() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <MartelEngineOrb size="sm" className="mx-auto mb-10" />
+            <p className="font-display tracking-[0.5em] text-xs text-white/25 uppercase mb-6">
+              Powered by MartelEngine™
+            </p>
             <h2 className="font-display text-5xl md:text-7xl text-white mb-6">Be First To Know</h2>
-            <p className="text-white/50 text-xl font-light mb-10 max-w-lg mx-auto">
+            <p className="text-white/40 text-xl font-light mb-10 max-w-lg mx-auto">
               The MartelEngine launch is coming. Get in position.
             </p>
-            <Link href="/contact">
-              <Button
-                className="font-display tracking-[0.3em] text-lg px-12 py-6 rounded-none text-black"
-                style={{ background: "hsl(44 56% 54%)", boxShadow: "0 0 40px hsl(44 56% 54% / 0.3)" }}
-                data-testid="btn-engine-contact"
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/contact">
+                <Button
+                  className="font-display tracking-[0.3em] text-lg px-12 py-6 rounded-none text-black"
+                  style={{ background: "hsl(44 90% 56%)", boxShadow: "0 0 40px hsl(44 90% 56% / 0.3)" }}
+                  data-testid="btn-engine-contact"
+                >
+                  Contact The Lab
+                </Button>
+              </Link>
+              <a
+                href="https://www.youtube.com/@StraightUpProductionOfficial"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Contact The Lab
-              </Button>
-            </Link>
+                <Button
+                  variant="outline"
+                  className="font-display tracking-[0.2em] text-lg px-12 py-6 rounded-none border-white/15 text-white/60 hover:text-white"
+                >
+                  Watch on YouTube
+                </Button>
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
