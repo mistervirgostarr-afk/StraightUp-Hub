@@ -57,7 +57,7 @@ export default function Apps() {
 
       {/* ── Free: Morning with the Master ── */}
       <section className="border-b border-white/5">
-        <a href="/morning" target="_blank" rel="noopener noreferrer">
+        <Link href="/apps/morning-with-the-master">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -110,7 +110,7 @@ export default function Apps() {
               </div>
             </div>
           </motion.div>
-        </a>
+        </Link>
       </section>
 
       {/* ── Featured: Royal Deck Tactics ── */}

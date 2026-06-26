@@ -254,14 +254,14 @@ export default function MorningWithTheMaster() {
               },
               {
                 step: "02",
-                title: "Come Back",
-                desc: "Return to this page. Click the button below to claim your free app.",
+                title: "Come Back Here",
+                desc: "Return to this page. Hit the gold button below — the app opens instantly.",
                 color: "hsl(44 90% 56%)",
               },
               {
                 step: "03",
-                title: "Start Your Morning",
-                desc: "Open Morning with the Master every day. The Word will be waiting.",
+                title: "Install on Your Phone",
+                desc: "Tap your browser menu → \"Add to Home Screen\". It installs like a native app. Free, forever.",
                 color: "hsl(185 100% 60%)",
               },
             ].map((s, i) => (
@@ -282,28 +282,52 @@ export default function MorningWithTheMaster() {
             ))}
           </div>
 
+          {/* Two-button CTA: subscribe first, then get the app */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mt-14"
+            className="mt-14 flex flex-col items-center gap-6"
           >
+            {/* Step 1 — Subscribe */}
             <a
               href="https://www.youtube.com/@StraightUpProductionOfficial"
               target="_blank"
               rel="noopener noreferrer"
             >
               <Button
-                className="font-display tracking-[0.3em] text-lg px-14 py-7 rounded-none flex items-center gap-3 mx-auto"
+                className="font-display tracking-[0.3em] text-lg px-14 py-7 rounded-none flex items-center gap-3"
                 style={{ background: "#FF0000", boxShadow: "0 0 50px rgba(255,0,0,0.3)" }}
                 data-testid="btn-subscribe-bottom"
               >
                 <Youtube className="w-6 h-6" />
-                Subscribe & Get the App Free
+                Step 1 — Subscribe on YouTube
               </Button>
             </a>
-            <p className="mt-5 text-white/20 text-sm font-light">
+
+            <div className="flex items-center gap-4 text-white/15">
+              <div className="h-px w-20" style={{ background: "hsl(44 90% 56% / 0.2)" }} />
+              <span className="font-display tracking-[0.3em] text-xs uppercase">Then</span>
+              <div className="h-px w-20" style={{ background: "hsl(44 90% 56% / 0.2)" }} />
+            </div>
+
+            {/* Step 2 — Get the App */}
+            <a href="/morning" target="_blank" rel="noopener noreferrer">
+              <Button
+                className="font-display tracking-[0.3em] text-lg px-14 py-7 rounded-none flex items-center gap-3 text-black"
+                style={{ background: "hsl(44 90% 56%)", boxShadow: "0 0 50px hsl(44 90% 56% / 0.35)" }}
+                data-testid="btn-get-app"
+              >
+                <BookOpen className="w-6 h-6" />
+                Step 2 — Open & Install the App
+              </Button>
+            </a>
+
+            <p className="text-white/20 text-sm font-light text-center max-w-sm">
+              On your phone: tap <span className="text-white/40">Share</span> or the browser menu → "Add to Home Screen" to install it like a native app.
+            </p>
+            <p className="text-white/15 text-xs font-light">
               Powered by StraightUp Production · Built by Maurice Martel
             </p>
           </motion.div>
