@@ -22,12 +22,13 @@ const item = {
 };
 
 const releases = [
-  { title: "Get Back to Work", type: "Album", year: "Upcoming", desc: "The next chapter. Cinematic, driven, relentless. A call to rise and build the Kingdom — no excuses, just execution.", upcoming: true },
-  { title: "Crowned", type: "Single", year: "2024", desc: "A declaration of identity — son, heir, crowned in grace.", upcoming: false },
-  { title: "Still Waters", type: "EP", year: "2023", desc: "Five tracks of cinematic gospel rap, layered with orchestral production.", upcoming: false },
-  { title: "Kingdom Come", type: "Album", year: "2022", desc: "The debut — sixteen tracks of testimony, war, and worship.", upcoming: false },
-  { title: "Righteous Fire", type: "Single", year: "2022", desc: "Hard-hitting proclamation with brass and 808s.", upcoming: false },
-  { title: "The Valley", type: "Single", year: "2021", desc: "An honest walk through doubt and divine faithfulness.", upcoming: false },
+  { title: "Look Up", type: "Single", year: "Live Now", desc: "Engineered by Grammy Award winner J. Hoover. Streaming on YouTube, Spotify, Apple Music, and iHeart.", live: true, upcoming: false },
+  { title: "When Time Expires", type: "Single", year: "Coming Soon", desc: "In house. Pending registration — the clock is always ticking toward eternity.", live: false, upcoming: true },
+  { title: "Wonder", type: "Single", year: "Coming Soon", desc: "In house. A meditation on awe — what it means to stand before something beyond comprehension.", live: false, upcoming: true },
+  { title: "Never Part", type: "Single", year: "Coming Soon", desc: "In house. A covenant song — the kind of bond that transcends time and separation.", live: false, upcoming: true },
+  { title: "On Top", type: "Single", year: "Coming Soon", desc: "In house. Victory declared before the battle ends.", live: false, upcoming: true },
+  { title: "Please You", type: "Single", year: "Coming Soon", desc: "In house. A prayer set to sound — one desire above all others.", live: false, upcoming: true },
+  { title: "Outro — Harvest Time", type: "Single", year: "Coming Soon", desc: "In house. The closing word. The season of reaping what the Spirit has sown.", live: false, upcoming: true },
 ];
 
 const pillars = [
@@ -158,7 +159,11 @@ export default function Artist() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="font-display text-5xl md:text-7xl mb-4">The Philosophy</h2>
+            <p className="font-display tracking-[0.4em] text-sm uppercase mb-4" style={{ color: "hsl(44 90% 56%)" }}>The Philosophy</p>
+            <h2 className="font-display text-5xl md:text-7xl mb-4 text-white">
+              Life is Waves<br />
+              <span style={{ color: "hsl(185 100% 60%)" }}>as God Intended</span>
+            </h2>
             <p className="text-white/50 text-lg max-w-xl mx-auto font-light">
               Four pillars that hold up everything S.O.A.K. creates.
             </p>
@@ -210,41 +215,32 @@ export default function Artist() {
               <motion.div
                 key={release.title}
                 variants={item}
-                className={`glass-panel group transition-all duration-500 overflow-hidden ${release.upcoming ? "border-primary/30 md:col-span-2 lg:col-span-1" : "hover:border-primary/20"}`}
+                className={`glass-panel group transition-all duration-500 overflow-hidden ${release.live ? "border-primary/40" : "hover:border-white/15"}`}
                 data-testid={`release-${release.title.toLowerCase().replace(/\s/g, "-")}`}
               >
                 <div className="aspect-square relative overflow-hidden flex items-center justify-center"
-                  style={{ background: "hsl(0 0% 4%)" }}>
-                  {release.upcoming ? (
-                    <>
-                      <img
-                        src="/assets/album-get-back-to-work.png"
-                        alt="Get Back to Work"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
-                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
-                      <div className="absolute top-3 right-3">
-                        <span className="font-display tracking-[0.3em] text-xs uppercase px-3 py-1"
-                          style={{ background: "hsl(44 90% 56%)", color: "hsl(0 0% 2%)" }}>
-                          Upcoming
-                        </span>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                        style={{ background: "radial-gradient(circle, hsl(44 56% 54% / 0.1), transparent 70%)" }}
-                      />
-                      <Music2 className="w-16 h-16 text-primary/30 group-hover:text-primary/60 transition-colors duration-500" />
-                    </>
-                  )}
+                  style={{ background: release.live ? "radial-gradient(circle, hsl(44 90% 56% / 0.12), hsl(0 0% 3%) 70%)" : "hsl(0 0% 4%)" }}>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{ background: "radial-gradient(circle, hsl(44 56% 54% / 0.08), transparent 70%)" }}
+                  />
+                  <Music2 className="w-16 h-16 text-primary/20 group-hover:text-primary/50 transition-colors duration-500" />
+                  <div className="absolute top-3 right-3">
+                    {release.live ? (
+                      <span className="font-display tracking-[0.3em] text-xs uppercase px-3 py-1 text-black"
+                        style={{ background: "hsl(44 90% 56%)" }}>
+                        Live Now
+                      </span>
+                    ) : (
+                      <span className="font-display tracking-[0.3em] text-xs uppercase px-3 py-1 border border-white/10 text-white/30">
+                        Coming Soon
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-2">
-                    <span className={`text-xs font-display tracking-widest uppercase ${release.upcoming ? "text-primary" : "text-accent"}`}>
-                      {release.type}
-                    </span>
-                    <span className="text-xs text-white/40">{release.year}</span>
+                    <span className="text-xs font-display tracking-widest uppercase text-accent">{release.type}</span>
+                    <span className={`text-xs font-display tracking-widest ${release.live ? "text-primary" : "text-white/30"}`}>{release.year}</span>
                   </div>
                   <h3 className="font-display text-2xl mb-2 text-white">{release.title}</h3>
                   <p className="text-white/50 text-sm font-light leading-relaxed">{release.desc}</p>

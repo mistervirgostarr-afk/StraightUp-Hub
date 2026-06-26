@@ -75,8 +75,10 @@ export default function MartelEngine() {
             muted
             loop
             playsInline
+            preload="auto"
             aria-hidden="true"
             className="w-full h-full object-cover"
+            onCanPlay={(e) => (e.currentTarget as HTMLVideoElement).play().catch(() => {})}
           />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black" />

@@ -88,7 +88,7 @@ const AppleIcon = () => (
   </svg>
 );
 
-const iHeartIcon = () => (
+const IHeartIcon = () => (
   <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
     <path d="M12 21.593c-.425-.38-8.968-7.93-8.968-12.453C3.032 5.67 5.204 3.5 8.5 3.5c1.746 0 3.348.87 4.5 2.25C14.152 4.37 15.754 3.5 17.5 3.5c3.296 0 5.468 2.17 5.468 5.64 0 4.523-8.543 12.073-8.968 12.453z"/>
   </svg>
@@ -227,7 +227,7 @@ export default function Music() {
                       className="font-display tracking-[0.25em] text-sm px-6 py-5 rounded-none flex items-center gap-2 text-white"
                       style={{ background: "#C6002B", boxShadow: "0 0 30px rgba(198,0,43,0.2)" }}
                     >
-                      <iHeartIcon />
+                      <IHeartIcon />
                       iHeart
                     </Button>
                   </a>
@@ -261,19 +261,19 @@ export default function Music() {
               <motion.div
                 key={track.title}
                 variants={itemVariant}
-                className="group flex items-center gap-6 md:gap-10 py-7 px-2 hover:bg-white/[0.02] transition-colors duration-300 cursor-default"
+                className="group flex items-center gap-4 md:gap-10 py-6 px-2 hover:bg-white/[0.02] transition-colors duration-300 cursor-default"
               >
-                {/* Track number */}
+                {/* Track number — compact on mobile */}
                 <span
-                  className="font-display text-3xl md:text-4xl w-14 shrink-0 text-right"
+                  className="font-display text-2xl md:text-4xl w-9 md:w-14 shrink-0 text-right"
                   style={{ color: track.color === "primary" ? "hsl(44 90% 56% / 0.15)" : "hsl(225 100% 65% / 0.15)" }}
                 >
                   {track.num}
                 </span>
 
-                {/* Icon */}
+                {/* Icon — hidden on small screens to save space */}
                 <div
-                  className="w-12 h-12 shrink-0 flex items-center justify-center"
+                  className="hidden sm:flex w-10 h-10 md:w-12 md:h-12 shrink-0 items-center justify-center"
                   style={{
                     background: track.color === "primary"
                       ? "radial-gradient(circle, hsl(44 90% 56% / 0.08), transparent)"
@@ -281,22 +281,23 @@ export default function Music() {
                   }}
                 >
                   <Music2
-                    className="w-5 h-5"
+                    className="w-4 h-4 md:w-5 md:h-5"
                     style={{ color: track.color === "primary" ? "hsl(44 90% 56% / 0.3)" : "hsl(225 100% 65% / 0.3)" }}
                   />
                 </div>
 
-                {/* Title + credit */}
+                {/* Title + credit — takes remaining space */}
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-display text-2xl md:text-3xl text-white/70 group-hover:text-white transition-colors duration-300 truncate">
+                  <h3 className="font-display text-xl md:text-3xl text-white/70 group-hover:text-white transition-colors duration-300 leading-tight">
                     {track.title}
                   </h3>
-                  <p className="text-white/25 text-sm font-light mt-1">{track.credit}</p>
+                  <p className="text-white/25 text-xs md:text-sm font-light mt-1">{track.credit}</p>
                 </div>
 
-                {/* Badge */}
-                <span className="shrink-0 font-display tracking-[0.3em] text-xs uppercase px-3 py-1 border border-white/10 text-white/25">
-                  Coming Soon
+                {/* Badge — abbreviated on mobile */}
+                <span className="shrink-0 font-display tracking-[0.2em] md:tracking-[0.3em] text-[10px] md:text-xs uppercase px-2 md:px-3 py-1 border border-white/10 text-white/25 whitespace-nowrap">
+                  <span className="hidden sm:inline">Coming Soon</span>
+                  <span className="sm:hidden">Soon</span>
                 </span>
               </motion.div>
             ))}
