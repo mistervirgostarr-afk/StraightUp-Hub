@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/morning/"
+title = "Morning with the Master"
+version = "1.0.0"
+id = "artifacts/morning-with-the-master"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/morning/" ]
+localPort = 24439
+
+[services.development]
+run = "pnpm --filter @workspace/morning-with-the-master run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/morning-with-the-master", "run", "build" ]
+publicDir = "artifacts/morning-with-the-master/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24439"
+BASE_PATH = "/morning/"
