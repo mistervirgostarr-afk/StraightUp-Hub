@@ -83,7 +83,7 @@ export default function Home() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.8 }}
           >
-            A sovereign, spirit-led creative empire. One man, one vision, one God.
+            A spirit-led creative empire. One man, one vision, one God.
           </motion.p>
 
           <motion.div
