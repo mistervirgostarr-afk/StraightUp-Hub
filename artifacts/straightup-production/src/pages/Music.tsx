@@ -29,7 +29,6 @@ const tracks = [
     color: "primary",
     youtube: "https://www.youtube.com/@StraightUpProductionOfficial",
     spotify: "https://open.spotify.com/album/6YYP3gf5m4RXuvujs1O5EZ",
-    apple: "https://music.apple.com/search?term=SOAK%20Look%20Up",
   },
   {
     num: "02",
@@ -204,15 +203,6 @@ export default function Music() {
                     >
                       <SpotifyIcon />
                       Spotify
-                    </Button>
-                  </a>
-                  <a href={liveTrack.apple} target="_blank" rel="noopener noreferrer">
-                    <Button
-                      className="font-display tracking-[0.25em] text-sm px-6 py-5 rounded-none flex items-center gap-2 text-white"
-                      style={{ background: "linear-gradient(135deg, #fc3c44, #ff2d55)", boxShadow: "0 0 30px rgba(252,60,68,0.2)" }}
-                    >
-                      <AppleIcon />
-                      Apple Music
                     </Button>
                   </a>
                 </div>
