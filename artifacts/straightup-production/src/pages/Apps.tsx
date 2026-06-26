@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Crown, Youtube } from "lucide-react";
+import { ArrowRight, Crown, BookOpen } from "lucide-react";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -57,7 +57,7 @@ export default function Apps() {
 
       {/* ── Free: Morning with the Master ── */}
       <section className="border-b border-white/5">
-        <Link href="/apps/morning-with-the-master">
+        <a href="/morning" target="_blank" rel="noopener noreferrer">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -81,9 +81,10 @@ export default function Apps() {
                 <div className="flex items-center gap-3 mb-5">
                   <span
                     className="font-display tracking-[0.3em] text-xs uppercase px-3 py-1 border flex items-center gap-2"
-                    style={{ borderColor: "#FF000050", color: "#FF4444" }}
+                    style={{ borderColor: "hsl(44 90% 56% / 0.5)", color: "hsl(44 90% 56%)" }}
                   >
-                    <Youtube className="w-3 h-3" /> Free for YouTube Subscribers
+                    <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
+                    Live Now — Free PWA
                   </span>
                 </div>
                 <h2 className="font-display text-5xl md:text-7xl text-white leading-none tracking-tight mb-4">
@@ -91,8 +92,8 @@ export default function Apps() {
                   <span style={{ color: "hsl(44 80% 62%)" }}>the Master</span>
                 </h2>
                 <p className="text-white/50 text-lg font-light leading-relaxed mb-8 max-w-md">
-                  Daily scripture + devotional reflection. A new word every morning.
-                  Subscribe on YouTube and get it free — no strings attached.
+                  365 days of scripture and devotional reflection — the words of the Lord Jesus Christ.
+                  A new word every morning. Free, forever. Install it to your home screen.
                 </p>
                 <div className="flex items-center gap-6">
                   <div>
@@ -100,16 +101,16 @@ export default function Apps() {
                     <p className="font-display text-3xl text-white">Free</p>
                   </div>
                   <Button
-                    className="font-display tracking-[0.25em] text-base px-8 py-4 rounded-none text-white flex items-center gap-2"
-                    style={{ background: "#CC0000", boxShadow: "0 0 30px rgba(204,0,0,0.35)" }}
+                    className="font-display tracking-[0.25em] text-base px-8 py-4 rounded-none text-black flex items-center gap-2"
+                    style={{ background: "hsl(44 90% 56%)", boxShadow: "0 0 30px hsl(44 90% 56% / 0.35)" }}
                   >
-                    <Youtube className="w-4 h-4" /> See How to Get It
+                    <BookOpen className="w-4 h-4" /> Open App
                   </Button>
                 </div>
               </div>
             </div>
           </motion.div>
-        </Link>
+        </a>
       </section>
 
       {/* ── Featured: Royal Deck Tactics ── */}

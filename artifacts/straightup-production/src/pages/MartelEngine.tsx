@@ -306,10 +306,10 @@ export default function MartelEngine() {
         {[
           { src: "/assets/martel-volume.png", label: "Volume" },
           { src: "/assets/martel-spiral.png", label: "Spiral" },
-          { src: "/assets/martel-fire.png", label: "Fire" },
           { src: "/assets/martel-cells.png", label: "Cells" },
           { src: "/assets/martel-eruption2.png", label: "Eruption" },
-          { src: "/assets/martel-flame.png", label: "Flame" },
+          { src: "/assets/martel-light.png", label: "Light" },
+          { src: "/assets/martel-eruption.png", label: "Eruption II" },
         ].map((item, i) => (
           <div key={item.label} className="relative overflow-hidden aspect-square group">
             <img
