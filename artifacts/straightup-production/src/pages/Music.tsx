@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Play, Music2, Disc3 } from "lucide-react";
+import { Play, Music2, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
@@ -12,7 +12,7 @@ const pageVariants = {
 
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.1 } }
+  show: { transition: { staggerChildren: 0.09 } }
 };
 
 const itemVariant = {
@@ -20,28 +20,83 @@ const itemVariant = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE } }
 };
 
-const featured = {
-  title: "Kingdom Come",
-  artist: "S.O.A.K.",
-  type: "Album",
-  year: "2022",
-  tracks: 16,
-  desc: "The debut album — sixteen tracks of testimony, war cry, and worship. Produced, written, and engineered entirely by Maurice Martel. A cathedral in sound form.",
-  gradient: "from-yellow-900/40 to-blue-900/20",
-};
-
-const catalog = [
-  { title: "Still Waters", type: "EP", year: "2023", tracks: 5, genre: "Gospel Rap", color: "accent" },
-  { title: "Crowned", type: "Single", year: "2024", tracks: 1, genre: "Christian Hip-Hop", color: "primary" },
-  { title: "Righteous Fire", type: "Single", year: "2022", tracks: 1, genre: "Gospel Rap", color: "accent" },
-  { title: "The Valley", type: "Single", year: "2021", tracks: 1, genre: "Worship Rap", color: "primary" },
-  { title: "Emmanuel", type: "Single", year: "2021", tracks: 1, genre: "Melodic Gospel", color: "accent" },
-  { title: "In His Name", type: "Single", year: "2020", tracks: 1, genre: "Christian Hip-Hop", color: "primary" },
+const tracks = [
+  {
+    num: "01",
+    title: "Look Up",
+    status: "live",
+    credit: "Engineered by Grammy Award winner J. Hoover",
+    color: "primary",
+    youtube: "https://www.youtube.com/@StraightUpProductionOfficial",
+    spotify: "https://open.spotify.com/search/SOAK%20Look%20Up",
+    apple: "https://music.apple.com/search?term=SOAK%20Look%20Up",
+  },
+  {
+    num: "02",
+    title: "When Time Expires",
+    status: "soon",
+    credit: "In house · Pending registration",
+    color: "accent",
+  },
+  {
+    num: "03",
+    title: "Wonder",
+    status: "soon",
+    credit: "In house · Single",
+    color: "primary",
+  },
+  {
+    num: "04",
+    title: "Never Part",
+    status: "soon",
+    credit: "In house · Single",
+    color: "accent",
+  },
+  {
+    num: "05",
+    title: "On Top",
+    status: "soon",
+    credit: "In house · Single",
+    color: "primary",
+  },
+  {
+    num: "06",
+    title: "Please You",
+    status: "soon",
+    credit: "In house · Single",
+    color: "accent",
+  },
+  {
+    num: "07",
+    title: "Outro — Harvest Time",
+    status: "soon",
+    credit: "In house · Single",
+    color: "primary",
+  },
 ];
 
-const genres = ["All", "Gospel Rap", "Christian Hip-Hop", "Worship Rap", "Melodic Gospel"];
+const SpotifyIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+  </svg>
+);
+
+const AppleIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
+    <path d="M23.997 6.124a.752.752 0 0 0-.752-.753H18.86l-1.362-4.083A.749.749 0 0 0 16.786.75H7.213a.75.75 0 0 0-.712.538L5.14 5.371H.755A.752.752 0 0 0 0 6.124v.002c0 .21.085.4.223.538l8.292 8.293a.748.748 0 0 0 1.06 0l2.424-2.424 2.424 2.424a.748.748 0 0 0 1.06 0l8.292-8.293a.75.75 0 0 0 .222-.538zM12 17.25l-9-9h18z"/>
+  </svg>
+);
+
+const YoutubeIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
+    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+  </svg>
+);
 
 export default function Music() {
+  const liveTrack = tracks[0];
+  const comingSoon = tracks.slice(1);
+
   return (
     <motion.div
       variants={pageVariants}
@@ -50,45 +105,10 @@ export default function Music() {
       exit="exit"
       className="bg-background pt-24"
     >
-      {/* ── Upcoming: Get Back to Work ── */}
-      <section className="relative min-h-[70vh] flex items-end overflow-hidden border-b border-white/5">
-        <div className="absolute inset-0">
-          <img
-            src="/assets/album-get-back-to-work.png"
-            alt="Get Back to Work — upcoming album"
-            className="w-full h-full object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-black/20" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-        </div>
-        <div className="relative z-10 container mx-auto px-6 md:px-12 pb-16 md:pb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: EASE }}
-          >
-            <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 font-display tracking-[0.35em] text-xs uppercase"
-              style={{ background: "hsl(44 90% 56%)", color: "hsl(0 0% 2%)" }}>
-              Upcoming Album
-            </div>
-            <h2 className="font-display text-6xl md:text-[7rem] text-white leading-none tracking-tight mb-4">
-              Get Back<br />
-              <span style={{ color: "hsl(44 80% 60%)" }}>to Work</span>
-            </h2>
-            <p className="text-white/50 text-xl font-light max-w-md mb-8 leading-relaxed">
-              S.O.A.K. · StraightUp Production
-            </p>
-            <p className="text-white/35 text-sm font-light max-w-sm leading-relaxed">
-              The next chapter is coming. Cinematic, driven, relentless.
-              A Kingdom call to rise and build — no excuses, just execution.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Header */}
+      {/* ── Page Header ── */}
       <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0"
+        <div
+          className="absolute inset-0"
           style={{ background: "radial-gradient(ellipse at top left, hsl(44 56% 54% / 0.08), transparent 60%)" }}
         />
         <div className="container mx-auto px-6 md:px-12 relative z-10">
@@ -97,140 +117,178 @@ export default function Music() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <p className="font-display text-primary tracking-[0.4em] text-lg mb-4 uppercase">The Catalog</p>
-            <h1 className="font-display text-7xl md:text-[8rem] text-white leading-none mb-6" data-testid="music-title">
+            <p className="font-display text-primary tracking-[0.4em] text-lg mb-4 uppercase">S.O.A.K.</p>
+            <h1 className="font-display text-7xl md:text-[8rem] text-white leading-none mb-6">
               Music
             </h1>
             <p className="text-white/50 text-xl font-light max-w-xl">
-              Every track is a page of testimony. Every beat is a prayer answered in frequency. Produced, written, and engineered by Maurice Martel.
+              Every track is testimony. Produced, written, and engineered by Maurice Martel — solo, in-house, and built to last.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Featured Release */}
-      <section className="pb-16 border-b border-white/5">
+      {/* ── Live Now: Look Up ── */}
+      <section className="pb-20 border-b border-white/5">
         <div className="container mx-auto px-6 md:px-12">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            className="font-display tracking-[0.4em] text-sm uppercase text-white/30 mb-8"
+          >
+            Now Streaming
+          </motion.p>
+
           <motion.div
             initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.9 }}
-            className={`glass-panel overflow-hidden`}
-            data-testid="featured-release"
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: EASE }}
+            className="glass-panel overflow-hidden"
           >
-            <div className="grid md:grid-cols-2">
-              <div className={`aspect-square bg-gradient-to-br ${featured.gradient} flex items-center justify-center relative overflow-hidden`}>
-                <div className="absolute inset-0 opacity-20"
+            <div className="grid md:grid-cols-5">
+              {/* Art placeholder */}
+              <div className="md:col-span-2 aspect-square md:aspect-auto relative flex items-center justify-center overflow-hidden"
+                style={{ background: "radial-gradient(circle at 40% 50%, hsl(44 90% 56% / 0.18), hsl(0 0% 2%) 70%)" }}
+              >
+                <div className="absolute inset-0 opacity-10"
                   style={{
-                    backgroundImage: "repeating-linear-gradient(45deg, hsl(44 56% 54% / 0.3) 0, hsl(44 56% 54% / 0.3) 1px, transparent 0, transparent 50%)",
+                    backgroundImage: "repeating-linear-gradient(45deg, hsl(44 56% 54% / 0.4) 0, hsl(44 56% 54% / 0.4) 1px, transparent 0, transparent 50%)",
                     backgroundSize: "20px 20px"
                   }}
                 />
-                <div className="relative z-10 text-center">
-                  <Disc3 className="w-24 h-24 text-primary/60 mx-auto mb-4" />
-                  <p className="font-display text-4xl text-white/20 tracking-widest">{featured.title}</p>
+                <div className="relative z-10 text-center px-10">
+                  <p className="font-display text-[8rem] leading-none text-white/5 select-none">01</p>
+                  <Music2 className="w-16 h-16 text-primary/40 mx-auto -mt-8" />
                 </div>
               </div>
-              <div className="p-10 md:p-14 flex flex-col justify-center">
+
+              {/* Info */}
+              <div className="md:col-span-3 p-10 md:p-14 flex flex-col justify-center">
                 <div className="flex items-center gap-3 mb-6">
-                  <span className="font-display tracking-widest text-accent text-sm uppercase border border-accent/30 px-3 py-1">Featured Release</span>
-                  <span className="text-white/30 text-sm">{featured.type} — {featured.year}</span>
+                  <motion.span
+                    animate={{ opacity: [1, 0.4, 1] }}
+                    transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                    className="inline-flex items-center gap-2 px-3 py-1 font-display tracking-[0.3em] text-xs uppercase text-black"
+                    style={{ background: "hsl(44 90% 56%)" }}
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-black" />
+                    Live Now
+                  </motion.span>
+                  <span className="text-white/30 text-sm font-display tracking-widest">Single</span>
                 </div>
-                <h2 className="font-display text-5xl md:text-6xl text-white mb-4">{featured.title}</h2>
-                <p className="font-display text-xl text-primary mb-6">{featured.artist}</p>
-                <p className="text-white/50 font-light leading-relaxed text-lg mb-8">{featured.desc}</p>
-                <div className="flex items-center gap-6 mb-8 text-sm text-white/40 font-display tracking-widest">
-                  <span>{featured.tracks} Tracks</span>
-                  <span className="w-1 h-1 rounded-full bg-white/20" />
-                  <span>{featured.year}</span>
-                  <span className="w-1 h-1 rounded-full bg-white/20" />
-                  <span>Full Production</span>
+
+                <h2 className="font-display text-6xl md:text-7xl text-white leading-none mb-4">
+                  Look Up
+                </h2>
+                <p className="font-display text-xl text-primary mb-2">S.O.A.K.</p>
+                <p className="text-white/40 text-sm font-light mb-8">
+                  {liveTrack.credit}
+                </p>
+
+                {/* Streaming links */}
+                <div className="flex flex-wrap gap-3">
+                  <a href={liveTrack.youtube} target="_blank" rel="noopener noreferrer">
+                    <Button
+                      className="font-display tracking-[0.25em] text-sm px-6 py-5 rounded-none flex items-center gap-2 text-white"
+                      style={{ background: "#FF0000", boxShadow: "0 0 30px rgba(255,0,0,0.25)" }}
+                    >
+                      <YoutubeIcon />
+                      YouTube
+                    </Button>
+                  </a>
+                  <a href={liveTrack.spotify} target="_blank" rel="noopener noreferrer">
+                    <Button
+                      className="font-display tracking-[0.25em] text-sm px-6 py-5 rounded-none flex items-center gap-2 text-white"
+                      style={{ background: "#1DB954", boxShadow: "0 0 30px rgba(29,185,84,0.2)" }}
+                    >
+                      <SpotifyIcon />
+                      Spotify
+                    </Button>
+                  </a>
+                  <a href={liveTrack.apple} target="_blank" rel="noopener noreferrer">
+                    <Button
+                      className="font-display tracking-[0.25em] text-sm px-6 py-5 rounded-none flex items-center gap-2 text-white"
+                      style={{ background: "linear-gradient(135deg, #fc3c44, #ff2d55)", boxShadow: "0 0 30px rgba(252,60,68,0.2)" }}
+                    >
+                      <AppleIcon />
+                      Apple Music
+                    </Button>
+                  </a>
                 </div>
-                <Button className="bg-primary hover:bg-primary/90 text-background font-display tracking-widest rounded-none px-8 py-5 self-start flex items-center gap-3" data-testid="btn-play-featured">
-                  <Play className="w-5 h-5 fill-current" />
-                  Listen Now
-                </Button>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Genre Filter */}
-      <section className="py-12 border-b border-white/5">
+      {/* ── Coming Soon ── */}
+      <section className="py-20">
         <div className="container mx-auto px-6 md:px-12">
-          <div className="flex flex-wrap gap-3" data-testid="genre-filters">
-            {genres.map((genre) => (
-              <button
-                key={genre}
-                className={`font-display tracking-widest text-sm uppercase px-5 py-2 border transition-all duration-300 ${
-                  genre === "All"
-                    ? "border-primary text-primary bg-primary/10"
-                    : "border-white/10 text-white/40 hover:border-white/30 hover:text-white/70"
-                }`}
-                data-testid={`filter-${genre.toLowerCase().replace(/\s/g, "-")}`}
-              >
-                {genre}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="font-display tracking-[0.4em] text-sm uppercase text-white/30 mb-10"
+          >
+            Coming Soon
+          </motion.p>
 
-      {/* Catalog Grid */}
-      <section className="py-16">
-        <div className="container mx-auto px-6 md:px-12">
           <motion.div
             variants={container}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="flex flex-col divide-y divide-white/5"
           >
-            {catalog.map((release) => (
+            {comingSoon.map((track) => (
               <motion.div
-                key={release.title}
+                key={track.title}
                 variants={itemVariant}
-                className="glass-panel group hover:border-white/20 transition-all duration-500 overflow-hidden cursor-pointer"
-                data-testid={`track-${release.title.toLowerCase().replace(/\s/g, "-")}`}
+                className="group flex items-center gap-6 md:gap-10 py-7 px-2 hover:bg-white/[0.02] transition-colors duration-300 cursor-default"
               >
-                <div className="aspect-square relative overflow-hidden flex items-center justify-center"
+                {/* Track number */}
+                <span
+                  className="font-display text-3xl md:text-4xl w-14 shrink-0 text-right"
+                  style={{ color: track.color === "primary" ? "hsl(44 90% 56% / 0.15)" : "hsl(225 100% 65% / 0.15)" }}
+                >
+                  {track.num}
+                </span>
+
+                {/* Icon */}
+                <div
+                  className="w-12 h-12 shrink-0 flex items-center justify-center"
                   style={{
-                    background: release.color === "primary"
-                      ? "radial-gradient(circle, hsl(44 56% 54% / 0.15), hsl(224 53% 4%) 70%)"
-                      : "radial-gradient(circle, hsl(220 100% 56% / 0.15), hsl(224 53% 4%) 70%)"
+                    background: track.color === "primary"
+                      ? "radial-gradient(circle, hsl(44 90% 56% / 0.08), transparent)"
+                      : "radial-gradient(circle, hsl(225 100% 65% / 0.08), transparent)"
                   }}
                 >
-                  <Music2 className={`w-16 h-16 ${release.color === "primary" ? "text-primary/30" : "text-accent/30"} group-hover:scale-110 transition-transform duration-500`} />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
-                      <Play className="w-6 h-6 text-white fill-white" />
-                    </div>
-                  </div>
+                  <Music2
+                    className="w-5 h-5"
+                    style={{ color: track.color === "primary" ? "hsl(44 90% 56% / 0.3)" : "hsl(225 100% 65% / 0.3)" }}
+                  />
                 </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className={`text-xs font-display tracking-widest uppercase ${release.color === "primary" ? "text-primary" : "text-accent"}`}>
-                      {release.type}
-                    </span>
-                    <span className="text-xs text-white/30">{release.year}</span>
-                  </div>
-                  <h3 className="font-display text-2xl text-white mb-1">{release.title}</h3>
-                  <p className="text-white/40 text-sm font-light">S.O.A.K.</p>
-                  <div className="flex items-center gap-3 mt-4 pt-4 border-t border-white/5">
-                    <span className="text-xs text-white/30 font-display tracking-wider">{release.genre}</span>
-                    <span className="text-white/20 text-xs">•</span>
-                    <span className="text-xs text-white/30">{release.tracks} track{release.tracks > 1 ? "s" : ""}</span>
-                  </div>
+
+                {/* Title + credit */}
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-display text-2xl md:text-3xl text-white/70 group-hover:text-white transition-colors duration-300 truncate">
+                    {track.title}
+                  </h3>
+                  <p className="text-white/25 text-sm font-light mt-1">{track.credit}</p>
                 </div>
+
+                {/* Badge */}
+                <span className="shrink-0 font-display tracking-[0.3em] text-xs uppercase px-3 py-1 border border-white/10 text-white/25">
+                  Coming Soon
+                </span>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Production Note */}
+      {/* ── Production Note ── */}
       <section className="py-20 border-t border-white/5 bg-card/20">
         <div className="container mx-auto px-6 md:px-12 max-w-4xl text-center">
           <motion.div
@@ -240,11 +298,11 @@ export default function Music() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="font-display text-4xl md:text-5xl text-white mb-6">
-              100% In-House Production
+              Solo. In-House. No Compromise.
             </h2>
             <p className="text-white/50 text-xl font-light leading-relaxed">
-              Every beat, every arrangement, every mix, and every master that comes out of StraightUp Production
-              is crafted by Maurice Martel himself. No outsourcing. No compromise. The MartelEngine is only the beginning.
+              Maurice Martel writes, produces, engineers, and releases every track under StraightUp Production.
+              One man. One mission. The MartelEngine makes it possible.
             </p>
           </motion.div>
         </div>
