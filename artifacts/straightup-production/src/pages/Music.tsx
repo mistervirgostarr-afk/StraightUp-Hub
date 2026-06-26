@@ -28,7 +28,7 @@ const tracks = [
     credit: "Engineered by Grammy Award winner J. Hoover",
     color: "primary",
     youtube: "https://www.youtube.com/@StraightUpProductionOfficial",
-    spotify: "https://open.spotify.com/search/SOAK%20Look%20Up",
+    spotify: "https://open.spotify.com/album/6YYP3gf5m4RXuvujs1O5EZ",
     apple: "https://music.apple.com/search?term=SOAK%20Look%20Up",
   },
   {
