@@ -30,6 +30,7 @@ const tracks = [
     youtube: "https://www.youtube.com/@StraightUpProductionOfficial",
     spotify: "https://open.spotify.com/album/6YYP3gf5m4RXuvujs1O5EZ",
     apple: "https://music.apple.com/album/1744722397",
+    iheart: "http://www.iheart.co/artist/soak-43057501/albums/look-up-268226259",
   },
   {
     num: "02",
@@ -84,6 +85,12 @@ const SpotifyIcon = () => (
 const AppleIcon = () => (
   <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
     <path d="M23.997 6.124a.752.752 0 0 0-.752-.753H18.86l-1.362-4.083A.749.749 0 0 0 16.786.75H7.213a.75.75 0 0 0-.712.538L5.14 5.371H.755A.752.752 0 0 0 0 6.124v.002c0 .21.085.4.223.538l8.292 8.293a.748.748 0 0 0 1.06 0l2.424-2.424 2.424 2.424a.748.748 0 0 0 1.06 0l8.292-8.293a.75.75 0 0 0 .222-.538zM12 17.25l-9-9h18z"/>
+  </svg>
+);
+
+const iHeartIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 21.593c-.425-.38-8.968-7.93-8.968-12.453C3.032 5.67 5.204 3.5 8.5 3.5c1.746 0 3.348.87 4.5 2.25C14.152 4.37 15.754 3.5 17.5 3.5c3.296 0 5.468 2.17 5.468 5.64 0 4.523-8.543 12.073-8.968 12.453z"/>
   </svg>
 );
 
@@ -213,6 +220,15 @@ export default function Music() {
                     >
                       <AppleIcon />
                       Apple Music
+                    </Button>
+                  </a>
+                  <a href={liveTrack.iheart} target="_blank" rel="noopener noreferrer">
+                    <Button
+                      className="font-display tracking-[0.25em] text-sm px-6 py-5 rounded-none flex items-center gap-2 text-white"
+                      style={{ background: "#C6002B", boxShadow: "0 0 30px rgba(198,0,43,0.2)" }}
+                    >
+                      <iHeartIcon />
+                      iHeart
                     </Button>
                   </a>
                 </div>
