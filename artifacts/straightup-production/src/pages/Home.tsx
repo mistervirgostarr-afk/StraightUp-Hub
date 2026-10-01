@@ -266,7 +266,7 @@ export default function Home() {
                 <br />ENGINE
               </h2>
               <p className="text-white/50 text-xl font-light leading-relaxed mb-10 max-w-lg">
-                A patented invention by Maurice Martel. What you see in the music — the light,
+                A patent-pending invention by Maurice Martel. What you see in the music — the light,
                 the energy, the rings — is the MartelEngine at work. Details are protected.
                 Revelations have their season.
               </p>
